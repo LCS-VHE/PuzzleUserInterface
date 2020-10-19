@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct RSAcalculator{
-    func numberOfRSA() -> String{
-        return "ERROR"
+    func numberOfRSA(lower:Int, upper:Int) -> String{
+        var rsa = [Int]()
+        for i in lower...upper{
+            // Making sure that the code does not kill itselef
+            if i > 2{
+                if 4 == divisorCount(of: i){
+                    rsa.append(i)
+                }
+            }
+        }
+        return String(rsa.count)
     }
     
     func divisorCount(of givenNumber: Int) -> Int {
