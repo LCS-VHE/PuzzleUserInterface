@@ -49,10 +49,19 @@ struct RSAcalculator{
 }
 
 struct RSANumber: View {
+    private var RSA = RSAcalculator()
+    
     var body: some View {
         NavigationView{
             VStack{
-                
+                Section(header:Text("User Input?")){
+                    List{
+                        
+                    }
+                }
+                Section(header:Text("OutPut")){
+                    
+                }
                 Text("Hello World")
             }
         }}
