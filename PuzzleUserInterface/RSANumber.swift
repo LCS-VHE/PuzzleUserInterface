@@ -83,10 +83,12 @@ struct RSANumber: View {
                     }
                 }
             }
-            .navigationBarTitle("RSA PUZZLE")
+            .navigationBarTitle("RSA Number")
+
         }
     }
 }
+
 
 struct RSANumber_Previews: PreviewProvider {
     static var previews: some View {
