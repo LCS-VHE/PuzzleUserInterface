@@ -66,25 +66,21 @@ struct RSANumber: View {
     @State private var upper = "2"
     
     var body: some View {
-        NavigationView{
-            VStack{
-                Form{
-                    Section(header:Text("User Input?")){
-                        List{
-                            TextField("LowerLimit?", text:$lower)
-                            TextField("UpperLimit?", text:$upper)
-                        }
-                    }
-                    Section(header:Text("Output")){
-                        Text("Lower Input: \(lower)")
-                        Text("Upper Input: \(upper)")
-                        
-                        Text("Number of RSA: \(RSA.numberOfRSA(lower: lower, upper: upper))")
+        VStack{
+            Form{
+                Section(header:Text("User Input?")){
+                    List{
+                        TextField("LowerLimit?", text:$lower)
+                        TextField("UpperLimit?", text:$upper)
                     }
                 }
+                Section(header:Text("Output")){
+                    Text("Lower Input: \(lower)")
+                    Text("Upper Input: \(upper)")
+                    
+                    Text("Number of RSA: \(RSA.numberOfRSA(lower: lower, upper: upper))")
+                }
             }
-            .navigationBarTitle("RSA Number")
-
         }
     }
 }
