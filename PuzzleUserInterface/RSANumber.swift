@@ -8,28 +8,19 @@
 import SwiftUI
 
 struct RSAcalculator{
-    func numberOfRSA(lower:Int, upper:Int) -> String{
-        guard let a = readLine() else{
+    func numberOfRSA(lower:String, upper:String) -> String{
+        guard let ba = Int(upper) else{
             return "ERROR"
         }
         
-        print("Enter upper limit of range")
-        guard let b = readLine() else{
-            return "ERROR"
-        }
-        
-        guard let ba = Int(b) else{
-            return "ERROR"
-        }
-        
-        guard let aa = Int(a) else{
+        guard let aa = Int(lower) else{
             return "ERROR"
         }
         
         if aa > ba{
             return "ERROR"
         }
-                
+        
         var rsa = [Int]()
         for i in aa...ba{
             // Making sure that the code does not kill itselef
@@ -76,20 +67,24 @@ struct RSANumber: View {
     
     var body: some View {
         NavigationView{
-        VStack{
-            Form{
-                Section(header:Text("User Input?")){
-                    List{
-                        TextField("LowerLimit?", text:$lower)
-                        TextField("UpperLimit?", text:$upper)
+            VStack{
+                Form{
+                    Section(header:Text("User Input?")){
+                        List{
+                            TextField("LowerLimit?", text:$lower)
+                            TextField("UpperLimit?", text:$upper)
+                        }
+                    }
+                    Section(header:Text("Output")){
+                        Text("Lower Input: \(lower)")
+                        Text("Upper Input: \(upper)")
+                        
+                        Text("Number of RSA: \(RSA.numberOfRSA(lower: lower, upper: upper))")
                     }
                 }
-                Section(header:Text("Output")){
-                    Text("The number of RSA numbers between \(lower) and \(upper)")
-                }
             }
-            
-        }}
+            .navigationBarTitle("RSA PUZZLE")
+        }
     }
 }
 
