@@ -50,13 +50,16 @@ struct RSAcalculator{
 
 struct RSANumber: View {
     private var RSA = RSAcalculator()
+    @State private var lower = ""
+    @State private var upper = ""
     
     var body: some View {
         NavigationView{
             VStack{
                 Section(header:Text("User Input?")){
                     List{
-                        
+                        TextField("LowerLimit?", text:$lower)
+                        TextField("UpperLimit?", text:$upper)
                     }
                 }
                 Section(header:Text("OutPut")){
