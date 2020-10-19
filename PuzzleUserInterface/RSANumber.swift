@@ -9,8 +9,29 @@ import SwiftUI
 
 struct RSAcalculator{
     func numberOfRSA(lower:Int, upper:Int) -> String{
+        guard let a = readLine() else{
+            return "ERROR"
+        }
+        
+        print("Enter upper limit of range")
+        guard let b = readLine() else{
+            return "ERROR"
+        }
+        
+        guard let ba = Int(b) else{
+            return "ERROR"
+        }
+        
+        guard let aa = Int(a) else{
+            return "ERROR"
+        }
+        
+        if aa > ba{
+            return "ERROR"
+        }
+                
         var rsa = [Int]()
-        for i in lower...upper{
+        for i in aa...ba{
             // Making sure that the code does not kill itselef
             if i > 2{
                 if 4 == divisorCount(of: i){
@@ -50,24 +71,26 @@ struct RSAcalculator{
 
 struct RSANumber: View {
     private var RSA = RSAcalculator()
-    @State private var lower = ""
-    @State private var upper = ""
+    @State private var lower = "2"
+    @State private var upper = "2"
     
     var body: some View {
         NavigationView{
-            VStack{
+        VStack{
+            Form{
                 Section(header:Text("User Input?")){
                     List{
                         TextField("LowerLimit?", text:$lower)
                         TextField("UpperLimit?", text:$upper)
                     }
                 }
-                Section(header:Text("OutPut")){
-                    
+                Section(header:Text("Output")){
+                    Text("The number of RSA numbers between \(lower) and \(upper)")
                 }
-                Text("Hello World")
             }
+            
         }}
+    }
 }
 
 struct RSANumber_Previews: PreviewProvider {
